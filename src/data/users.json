@@ -1,0 +1,62 @@
+[
+    {
+        "_id": "656272d752ca105bdd8187e9",
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "dateOfBirth": "632361600000",
+        "password": "$2a$12$UscV/v0o89XOYsibVtUQVuuMZ/UeRVHP0AJWNoLk4fqozWcASwsrC",
+        "passwordConformation": "$2a$12$UscV/v0o89XOYsibVtUQVuuMZ/UeRVHP0AJWNoLk4fqozWcASwsrC",
+        "activated": true,
+        "idDeleted": false,
+        "createdAt": "1700950743661",
+        "updatedAt": "1700950743661"
+    },
+    {
+        "_id": "6562730652ca105bdd8187eb",
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "dateOfBirth": "485395200000",
+        "password": "$2a$12$86uRuO6A7E1A6sfL1ZZhrO/aIss4AaY9BHcRWgx21Hm4axromXGJm",
+        "passwordConformation": "$2a$12$86uRuO6A7E1A6sfL1ZZhrO/aIss4AaY9BHcRWgx21Hm4axromXGJm",
+        "activated": true,
+        "idDeleted": false,
+        "createdAt": "1700950790936",
+        "updatedAt": "1700950790936"
+    },
+    {
+        "_id": "6562732152ca105bdd8187ed",
+        "name": "Bob Johnson",
+        "email": "bob.johnson@example.com",
+        "dateOfBirth": "721180800000",
+        "password": "$2a$12$PfkMZimiloleeKT3uaXfEOjXpXb01517.0cdLqV6tvGD1TwuP0g2i",
+        "passwordConformation": "$2a$12$PfkMZimiloleeKT3uaXfEOjXpXb01517.0cdLqV6tvGD1TwuP0g2i",
+        "activated": true,
+        "idDeleted": false,
+        "createdAt": "1700950817843",
+        "updatedAt": "1700950817843"
+    },
+    {
+        "_id": "6562733152ca105bdd8187ef",
+        "name": "Alice Williams",
+        "email": "alice.williams@example.com",
+        "dateOfBirth": "583891200000",
+        "password": "$2a$12$exaPG7a.UIlWUBLhfc9XnuMcNxlesvAF1t9NxyQTe5uMlojbPmzpW",
+        "passwordConformation": "$2a$12$exaPG7a.UIlWUBLhfc9XnuMcNxlesvAF1t9NxyQTe5uMlojbPmzpW",
+        "activated": true,
+        "idDeleted": false,
+        "createdAt": "1700950833551",
+        "updatedAt": "1700950833551"
+    },
+    {
+        "_id": "6562734652ca105bdd8187f1",
+        "name": "Eva Davis",
+        "email": "eva.davis@example.com",
+        "dateOfBirth": "797644800000",
+        "password": "$2a$12$eyF8pO6eiOcZN6VQ3HHnjunyf2S/5ejtS/Xxe39gcQuBqpW8V/wBC",
+        "passwordConformation": "$2a$12$eyF8pO6eiOcZN6VQ3HHnjunyf2S/5ejtS/Xxe39gcQuBqpW8V/wBC",
+        "activated": true,
+        "idDeleted": false,
+        "createdAt": "1700950854946",
+        "updatedAt": "1700950854946"
+    }
+]
