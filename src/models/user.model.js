@@ -17,14 +17,6 @@ const userSchema = new mongoose.Schema(
             required: true,
             unique: true,
         },
-        role: {
-            type: String,
-            enum: {
-                values: ['vender', 'user', 'none'],
-            },
-            default: 'user',
-        },
-
         dateOfBirth: {
             type: Date,
             required: true,

@@ -5,7 +5,6 @@ const router = express.Router();
 
 router
     .route('/')
-    .get(taskController.getAllTask)
     .post(taskController.createTask);
 
 router
