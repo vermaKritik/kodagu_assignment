@@ -5,7 +5,8 @@ exports.getAll = async (Model, query) => {
         .filter()
         .sort()
         .limitFields()
-        .paginate();
+        .paginate()
+        .excludeDeleted();
 
     const doc = await features.query;
     return doc;

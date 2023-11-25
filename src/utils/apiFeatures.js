@@ -3,6 +3,12 @@ class APIFeatures {
         this.query = query;
         this.queryString = queryString;
     }
+    
+    excludeDeleted() {
+        // 4) EXCLUDE DELETED DOCUMENTS
+        this.query = this.query.find({ isDeleted: { $ne: true } });
+        return this;
+    }
 
     filter() {
         // 1)  FILTERING
@@ -23,12 +29,12 @@ class APIFeatures {
     }
 
     sort() {
-        // 3) SORTING        
+        // 3) SORTING
         if (this.queryString.sort) {
             const sortBy = this.queryString.sort.split(',').join(' ');
 
             // TODO: ERROR IN SORTING ON 2 BASES
-        
+
             this.query = this.query.sort(sortBy);
         } else {
             this.query = this.query.sort('-createdAt');

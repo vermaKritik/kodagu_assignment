@@ -11,6 +11,7 @@ const authorizeMiddleware = require('./middleware/authorize.middleware');
 const healthCheckRoutes = require('./routes/healthCheck.routes');
 const authRouter = require('./routes/auth.routes');
 const userRoutes = require('./routes/user.routes');
+const taskRoutes = require('./routes/task.routes');
 
 // Global Error Handler
 const globalErrorHandler = require('./controllers/error.controller');
@@ -46,6 +47,7 @@ app.use('/api/v1', authRouter);
 app.use(authorizeMiddleware.protect);
 
 app.use('/api/v1/me', userRoutes);
+app.use('/api/v1/task', taskRoutes);
 
 app.all('*', (req, res, next) => {
     next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
