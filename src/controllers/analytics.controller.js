@@ -66,7 +66,7 @@ exports.getAnalyticsTaskDateRange = catchAsync(async (req, res) => {
                 completedTasks: {
                     $sum: { $cond: [{ $eq: ['$completion', true] }, 1, 0] },
                 },
-                topTenUsers: { $addToSet: '$assigned_user' }, // Use $addToSet to get unique users
+                topTenUsers: { $addToSet: '$assigned_user' },
             },
         },
         {
@@ -83,6 +83,98 @@ exports.getAnalyticsTaskDateRange = catchAsync(async (req, res) => {
     ]);
     res.status(200).json({
         status: 'success',
+        queryData:{
+            startDate,
+            endDate,
+            type
+        },
         stats,
+    });
+});
+
+exports.getAnalyticsMe = catchAsync(async (req, res) => {
+    const type = req.query.type;
+
+    if (!type) {
+        return res.status(400).json({
+            error: 'Type is required',
+        });
+    }
+
+    switch (type) {
+        case 'w':
+            startDateTime = new Date();
+            startDateTime.setDate(
+                startDateTime.getDate() - startDateTime.getDay()
+            );
+            endDateTime = new Date(startDateTime);
+            endDateTime.setDate(endDateTime.getDate() + 6);
+            break;
+        case 'm':
+            startDateTime = new Date();
+            startDateTime.setDate(1);
+            endDateTime = new Date(startDateTime);
+            endDateTime.setMonth(endDateTime.getMonth() + 1);
+            endDateTime.setDate(endDateTime.getDate() - 1);
+            break;
+        case 'y':
+            startDateTime = new Date(new Date().getFullYear(), 0, 1);
+            endDateTime = new Date(new Date().getFullYear(), 11, 31);
+            break;
+        default:
+            return res.status(400).json({ error: 'Invalid input type.' });
+    }
+
+    const stats = await Task.aggregate([
+        {
+            $match: {
+                updatedAt: { $gte: startDateTime, $lte: endDateTime },
+                assigned_user: { $eq: req.user._id },
+            },
+        },
+        {
+            $group: {
+                _id: null,
+                totalAssignedTasks: { $sum: 1 },
+                deletedTasks: {
+                    $sum: { $cond: [{ $eq: ['$isDeleted', true] }, 1, 0] },
+                },
+                completedTasks: {
+                    $sum: { $cond: [{ $eq: ['$completion', true] }, 1, 0] },
+                },
+                completedPadding: {
+                    $sum: { $cond: [{ $eq: ['$completion', true] }, 1, 0] },
+                }
+            },
+        },
+        {
+            $project: {
+                _id: 0,
+                totalAssignedTasks: 1,
+                deletedTasks: 1,
+                completedTasks: 1,
+               
+            },
+        },
+    ]);
+
+    const tasks = await Task.find({
+        updatedAt: { $gte: startDateTime, $lte: endDateTime },
+        assigned_user: { $eq: req.user._id },
+    });
+
+    res.status(200).json({
+        status: 'success',
+        queryData:{
+            type
+        },
+        calculatedParameters:{
+            startDateTime,
+            endDateTime, 
+        },
+        stats,
+        data: {
+            tasks,
+        },
     });
 });

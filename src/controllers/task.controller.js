@@ -3,25 +3,14 @@ const Task = require('../models/task.model');
 const handlerFactory = require('../services/handlerFactory.service');
 
 exports.createTask = catchAsync(async (req, res, next) => {
-    const {
-        title,
-        description,
-        assigned_user,
-        due_date,
-        
-    } = req.body;
-    
     const task = await handlerFactory.createOne(Task, {
-        title,
-        description,
-        assigned_user,
-        due_date,
-        createdBy:req.user._id,
+        ...req.body,
+        createdBy: req.user._id,
     });
 
     res.status(201).json({
-        status:"Success",
-        task
+        status: 'Success',
+        task,
     });
 });
 
@@ -61,7 +50,7 @@ exports.deleteProduct = catchAsync(async (req, res) => {
     const task = await handlerFactory.updateOne(
         Task,
         { _id: req.params.id },
-        {isDeleted:"true"}
+        { isDeleted: 'true' }
     );
 
     res.status(200).json({
