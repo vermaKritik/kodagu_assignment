@@ -4,9 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "mocha ./src/tests/*.test.js",
         "start": "nodemon ./src/server.js",
-        "jest": "jest"
+        "test": "jest"
     },
     "keywords": [],
     "author": "",
