@@ -4,8 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "mocha ./src/tests/*.test.js ",
-        "start": "nodemon ./src/server.js"
+        "test": "mocha ./src/tests/*.test.js",
+        "start": "nodemon ./src/server.js",
+        "jest": "jest"
     },
     "keywords": [],
     "author": "",
@@ -18,16 +19,13 @@
         "express": "^4.18.2",
         "jsonwebtoken": "^9.0.1",
         "mongoose": "^7.4.3",
-        "supertest": "^6.3.3",
         "validator": "^13.11.0"
     },
     "devDependencies": {
-        "@types/chai": "^4.3.11",
-        "@types/chai-http": "^4.2.0",
-        "@types/node": "^20.10.0",
-        "chai": "^4.3.10",
-        "chai-http": "^4.4.0",
-        "mocha": "^10.2.0",
+        "@types/jest": "^27.0.2",
+        "jest": "^27.2.4",
+        "supertest": "^6.1.6",
+        "mongodb-memory-server": "^9.1.1",
         "nodemon": "^3.0.1",
         "prettier": "^3.0.2",
         "typescript": "^5.3.2"
