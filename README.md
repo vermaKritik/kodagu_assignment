@@ -1,4 +1,4 @@
-# API
+# Kodagu Assignment
 
 ## About Me
 Hello, I'm Kritik Verma, final year undergrad at IIT Ropar and a software Developer with a strong track record of successful internships and a passion for innovative web solutions. I bring a wealth of experience in frontend development. From crafting robust React.js frontends and lambda api's at 'I’mbesideyou'(summer internship) to optimizing features and creating interactive dashboards at 'Mobishaala' (winter internship). 
